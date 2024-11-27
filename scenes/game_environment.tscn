@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgts84jbalyck"]
+[gd_scene load_steps=8 format=3 uid="uid://dgts84jbalyck"]
 
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
 [ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]
 [ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://models/Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="2_qbl3a"]
+[ext_resource type="Material" uid="uid://ngfdiiq3iuit" path="res://materials/ground.tres" id="4_5v5c2"]
 
 [sub_resource type="Environment" id="Environment_x743u"]
 
@@ -35,6 +36,7 @@ environment = SubResource("Environment_x743u")
 camera_attributes = SubResource("CameraAttributesPractical_ymtfk")
 
 [node name="Ground" type="CSGBox3D" parent="WorldEnvironment"]
+material_override = ExtResource("4_5v5c2")
 size = Vector3(100, 0.01, 100)
 
 [node name="Area3D" type="Area3D" parent="WorldEnvironment/Ground"]
