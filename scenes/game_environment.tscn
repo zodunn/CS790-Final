@@ -1,16 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgts84jbalyck"]
+[gd_scene load_steps=22 format=3 uid="uid://dgts84jbalyck"]
 
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
 [ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]
+[ext_resource type="Script" path="res://scripts/collision_controller.gd" id="2_kbuqb"]
 [ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://models/Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="2_qbl3a"]
 [ext_resource type="Material" uid="uid://ngfdiiq3iuit" path="res://materials/ground.tres" id="4_5v5c2"]
+[ext_resource type="Material" uid="uid://brtlgnjr8myva" path="res://materials/pointer.tres" id="4_dj8og"]
+[ext_resource type="Script" path="res://scripts/LineRenderer.gd" id="4_rrbfe"]
+[ext_resource type="Material" uid="uid://67u77kmtkecq" path="res://materials/yellow.tres" id="5_h2h5r"]
+[ext_resource type="Material" uid="uid://bhp5w6vlhvikg" path="res://materials/blue.tres" id="6_fwged"]
+[ext_resource type="Material" uid="uid://clpjm68mbpd6g" path="res://materials/red.tres" id="7_emujx"]
+[ext_resource type="Material" uid="uid://daworc7kg6uoc" path="res://materials/green.tres" id="8_c66wu"]
+[ext_resource type="Material" uid="uid://crnkf816fmfrs" path="res://materials/store.tres" id="9_iomm3"]
+[ext_resource type="Material" uid="uid://bcaxuija8rrb3" path="res://materials/washbin.tres" id="10_gwgbf"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_ae32m"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_km134"]
 
 [sub_resource type="Environment" id="Environment_x743u"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ymtfk"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mdqaj"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ey8ib"]
 size = Vector3(100, 0.01, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dnbt7"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ix56f"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ynfl"]
+size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_grwbd")
@@ -21,28 +43,139 @@ script = ExtResource("1_grwbd")
 
 [node name="left" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
+script = ExtResource("2_kbuqb")
 
 [node name="OculusQuest2TouchController_Left" parent="XROrigin3D/left" instance=ExtResource("1_f7dng")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/left"]
+collide_with_areas = true
+
+[node name="LineRenderer" type="MeshInstance3D" parent="XROrigin3D/left"]
+material_override = ExtResource("4_dj8og")
+mesh = SubResource("ImmediateMesh_ae32m")
+script = ExtResource("4_rrbfe")
+
 [node name="right" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
+script = ExtResource("2_kbuqb")
 
 [node name="OculusQuest2TouchController_Right" parent="XROrigin3D/right" instance=ExtResource("2_qbl3a")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/right"]
+collide_with_areas = true
+
+[node name="LineRenderer" type="MeshInstance3D" parent="XROrigin3D/right"]
+material_override = ExtResource("4_dj8og")
+mesh = SubResource("ImmediateMesh_km134")
+script = ExtResource("4_rrbfe")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_x743u")
 camera_attributes = SubResource("CameraAttributesPractical_ymtfk")
 
-[node name="Ground" type="CSGBox3D" parent="WorldEnvironment"]
+[node name="StaticBody3D" type="StaticBody3D" parent="WorldEnvironment"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Ground" type="CSGBox3D" parent="WorldEnvironment/StaticBody3D"]
 material_override = ExtResource("4_5v5c2")
 size = Vector3(100, 0.01, 100)
 
-[node name="Area3D" type="Area3D" parent="WorldEnvironment/Ground"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/StaticBody3D"]
+shape = SubResource("BoxShape3D_ey8ib")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Ground/Area3D"]
-shape = SubResource("BoxShape3D_mdqaj")
+[node name="glass" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.75)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/glass"]
+shape = SubResource("BoxShape3D_dnbt7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/glass"]
+material_override = ExtResource("6_fwged")
+size = Vector3(0.5, 1, 0.5)
+
+[node name="metal" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -0.75)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/metal"]
+shape = SubResource("BoxShape3D_dnbt7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/metal"]
+material_override = ExtResource("7_emujx")
+size = Vector3(0.5, 1, 0.5)
+
+[node name="plastic" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.75)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/plastic"]
+shape = SubResource("BoxShape3D_dnbt7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/plastic"]
+material_override = ExtResource("8_c66wu")
+size = Vector3(0.5, 1, 0.5)
+
+[node name="paper" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -0.75)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/paper"]
+shape = SubResource("BoxShape3D_dnbt7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/paper"]
+material_override = ExtResource("5_h2h5r")
+size = Vector3(0.5, 1, 0.5)
+
+[node name="washbin" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.886, 0.5, 2.125)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/washbin"]
+shape = SubResource("BoxShape3D_dnbt7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/washbin"]
+material_override = ExtResource("10_gwgbf")
+
+[node name="store" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.364, 0.5, -12.691)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/store"]
+shape = SubResource("BoxShape3D_dnbt7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/store"]
+material_override = ExtResource("9_iomm3")
+size = Vector3(0.5, 1, 0.5)
+
+[node name="test_trash" type="RigidBody3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82235, -0.882963)
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.5
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/test_trash"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Area3D" type="Area3D" parent="WorldEnvironment/test_trash"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/test_trash/Area3D"]
+shape = SubResource("BoxShape3D_ix56f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/test_trash"]
+shape = SubResource("BoxShape3D_2ynfl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.37202, 0)
+
+[connection signal="input_float_changed" from="XROrigin3D/left" to="XROrigin3D/left" method="_on_input_float_changed"]
+[connection signal="input_float_changed" from="XROrigin3D/right" to="XROrigin3D/right" method="_on_input_float_changed"]
