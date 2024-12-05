@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://dgts84jbalyck"]
+[gd_scene load_steps=23 format=3 uid="uid://dgts84jbalyck"]
 
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
 [ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]
+[ext_resource type="Script" path="res://scripts/grabbing_methods.gd" id="2_3p5ft"]
 [ext_resource type="Script" path="res://scripts/collision_controller.gd" id="2_kbuqb"]
 [ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://models/Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="2_qbl3a"]
 [ext_resource type="Material" uid="uid://ngfdiiq3iuit" path="res://materials/ground.tres" id="4_5v5c2"]
@@ -38,6 +39,7 @@ size = Vector3(0.2, 0.2, 0.2)
 script = ExtResource("1_grwbd")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("2_3p5ft")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 
@@ -75,15 +77,15 @@ script = ExtResource("4_rrbfe")
 environment = SubResource("Environment_x743u")
 camera_attributes = SubResource("CameraAttributesPractical_ymtfk")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="WorldEnvironment"]
+[node name="Ground" type="StaticBody3D" parent="WorldEnvironment"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="Ground" type="CSGBox3D" parent="WorldEnvironment/StaticBody3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/Ground"]
 material_override = ExtResource("4_5v5c2")
 size = Vector3(100, 0.01, 100)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Ground"]
 shape = SubResource("BoxShape3D_ey8ib")
 
 [node name="glass" type="StaticBody3D" parent="WorldEnvironment"]
@@ -161,7 +163,7 @@ size = Vector3(0.5, 1, 0.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82235, -0.882963)
 collision_layer = 2
 collision_mask = 2
-gravity_scale = 0.5
+gravity_scale = 0.25
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/test_trash"]
 size = Vector3(0.2, 0.2, 0.2)
@@ -177,5 +179,11 @@ shape = SubResource("BoxShape3D_2ynfl")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.37202, 0)
 
+[connection signal="button_pressed" from="XROrigin3D/left" to="XROrigin3D/left" method="_on_button_pressed"]
+[connection signal="button_released" from="XROrigin3D/left" to="XROrigin3D/left" method="_on_button_released"]
+[connection signal="input_float_changed" from="XROrigin3D/left" to="XROrigin3D" method="_on_left_input_float_changed"]
 [connection signal="input_float_changed" from="XROrigin3D/left" to="XROrigin3D/left" method="_on_input_float_changed"]
+[connection signal="button_pressed" from="XROrigin3D/right" to="XROrigin3D/right" method="_on_button_pressed"]
+[connection signal="button_released" from="XROrigin3D/right" to="XROrigin3D/right" method="_on_button_released"]
+[connection signal="input_float_changed" from="XROrigin3D/right" to="XROrigin3D" method="_on_right_input_float_changed"]
 [connection signal="input_float_changed" from="XROrigin3D/right" to="XROrigin3D/right" method="_on_input_float_changed"]

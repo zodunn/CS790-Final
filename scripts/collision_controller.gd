@@ -1,10 +1,15 @@
 extends XRController3D
 
 var gripping: bool = false
-var holding: bool = false
-var obj
-var velocity = 0.0
-var last_pos
+
+# teleport variables
+var want_teleport: bool = false
+var moving: bool = false
+var final_loc: Vector3
+var parent: Node3D
+var translation_speed: int = 20
+var has_let_go: bool = true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,27 +26,17 @@ func _process(delta: float) -> void:
 	
 	$"RayCast3D".target_position = $"RayCast3D".to_local(end)
 	
-	var colliding = $"RayCast3D".is_colliding()
-	
-	if colliding and gripping and not holding:
-		obj = $"RayCast3D".get_collider().get_parent_node_3d()
-		obj.freeze = true
-		obj.global_position = global_position
-		holding = true
-		last_pos = global_position
-		$"LineRenderer".visible = false
-	elif holding:
-		var delta_pos = global_position - last_pos
-		velocity = delta_pos / delta
-		obj.global_position += delta_pos
-	else:
-		if obj:
-			obj.freeze = false
-			obj.linear_velocity = velocity
-			obj = null
-			velocity = 0.0
-			$"LineRenderer".visible = true
-	last_pos = global_position
+	if $"RayCast3D".is_colliding() and !gripping:
+		if want_teleport and has_let_go and moving == false:
+			has_let_go = false
+			moving = true
+			final_loc = $"RayCast3D".get_collision_point()
+			parent = get_parent()
+			
+	if moving:
+		parent.global_position = parent.global_position.move_toward(final_loc, delta * translation_speed)
+		if parent.global_position == final_loc:
+			moving = false
 
 
 func _on_input_float_changed(name: String, value: float) -> void:
@@ -50,4 +45,14 @@ func _on_input_float_changed(name: String, value: float) -> void:
 			gripping = true
 		else:
 			gripping = false
-			holding = false
+
+
+func _on_button_pressed(name: String) -> void:
+	if name == "ax_button":
+		want_teleport = true
+
+
+func _on_button_released(name: String) -> void:
+	if name == "ax_button":
+		want_teleport = false
+		has_let_go = true
