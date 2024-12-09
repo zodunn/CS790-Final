@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://but7jia6d64pi"]
+
+[ext_resource type="Material" uid="uid://duvghayegwvnr" path="res://materials/red.tres" id="1_ndcva"]
+[ext_resource type="Script" path="res://scripts/cube.gd" id="1_ysw1i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_asu72"]
+material = ExtResource("1_ndcva")
+
+[node name="cube3" type="Area3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -3.66636)
+script = ExtResource("1_ysw1i")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+polygon = PackedVector2Array(-0.492565, 0.489953, 0.487341, 0.489953, 0.494821, -0.478732, -0.500045, -0.493693)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_asu72")

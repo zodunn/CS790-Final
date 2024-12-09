@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/collision_controller.gd" id="2_kbuqb"]
 [ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://models/Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="2_qbl3a"]
 [ext_resource type="Material" uid="uid://ngfdiiq3iuit" path="res://materials/ground.tres" id="4_5v5c2"]
+[ext_resource type="PackedScene" uid="uid://6mpnpuxxqtfk" path="res://scenes/conveyor_belt_scene.tscn" id="5_nl8i4"]
 [ext_resource type="Material" uid="uid://brtlgnjr8myva" path="res://materials/pointer.tres" id="4_dj8og"]
 [ext_resource type="Script" path="res://scripts/LineRenderer.gd" id="4_rrbfe"]
 [ext_resource type="Material" uid="uid://67u77kmtkecq" path="res://materials/yellow.tres" id="5_h2h5r"]
@@ -45,6 +46,7 @@ script = ExtResource("1_grwbd")
 script = ExtResource("2_3p5ft")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(-0.441224, 0, 0.897397, 0, 1, 0, -0.897397, 0, -0.441224, 3.63219, 1.7177, -4.34981)
 
 [node name="left" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
@@ -187,6 +189,7 @@ shape = SubResource("BoxShape3D_2ynfl")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.37202, 0)
 
+[node name="ConveyorBeltScene" parent="." instance=ExtResource("5_nl8i4")]
 [connection signal="button_pressed" from="XROrigin3D/left" to="XROrigin3D/left" method="_on_button_pressed"]
 [connection signal="button_released" from="XROrigin3D/left" to="XROrigin3D/left" method="_on_button_released"]
 [connection signal="input_float_changed" from="XROrigin3D/left" to="XROrigin3D" method="_on_left_input_float_changed"]

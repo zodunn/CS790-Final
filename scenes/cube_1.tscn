@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://2amr513ssc5h"]
+
+[ext_resource type="Script" path="res://scripts/cube.gd" id="1_i7l42"]
+[ext_resource type="Material" uid="uid://s846wy48004o" path="res://materials/black.tres" id="1_tq5pw"]
+[ext_resource type="Material" uid="uid://duvghayegwvnr" path="res://materials/red.tres" id="2_x6yef"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_asu72"]
+material = ExtResource("2_x6yef")
+
+[node name="cube1" type="Area3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_i7l42")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+polygon = PackedVector2Array(-0.492565, 0.489953, 0.487341, 0.489953, 0.494821, -0.478732, -0.500045, -0.493693)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_tq5pw")
+mesh = SubResource("BoxMesh_asu72")
