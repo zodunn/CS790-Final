@@ -1,19 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://dgts84jbalyck"]
+[gd_scene load_steps=24 format=3 uid="uid://c64k4rps3jp4r"]
 
-[ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
-[ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]
-[ext_resource type="Script" path="res://scripts/grabbing_methods.gd" id="2_3p5ft"]
-[ext_resource type="Script" path="res://scripts/collision_controller.gd" id="2_kbuqb"]
-[ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://models/Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="2_qbl3a"]
-[ext_resource type="Material" uid="uid://ngfdiiq3iuit" path="res://materials/ground.tres" id="4_5v5c2"]
-[ext_resource type="Material" uid="uid://brtlgnjr8myva" path="res://materials/pointer.tres" id="4_dj8og"]
-[ext_resource type="Script" path="res://scripts/LineRenderer.gd" id="4_rrbfe"]
-[ext_resource type="Material" uid="uid://67u77kmtkecq" path="res://materials/yellow.tres" id="5_h2h5r"]
-[ext_resource type="Material" uid="uid://bhp5w6vlhvikg" path="res://materials/blue.tres" id="6_fwged"]
-[ext_resource type="Material" uid="uid://clpjm68mbpd6g" path="res://materials/red.tres" id="7_emujx"]
-[ext_resource type="Material" uid="uid://daworc7kg6uoc" path="res://materials/green.tres" id="8_c66wu"]
-[ext_resource type="Material" uid="uid://crnkf816fmfrs" path="res://materials/store.tres" id="9_iomm3"]
-[ext_resource type="Material" uid="uid://bcaxuija8rrb3" path="res://materials/washbin.tres" id="10_gwgbf"]
+[ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_yiiab"]
+[ext_resource type="Script" path="res://scripts/grabbing_methods.gd" id="2_feyt0"]
+[ext_resource type="Script" path="res://scripts/collision_controller.gd" id="3_lki0u"]
+[ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="4_1s1eb"]
+[ext_resource type="Material" uid="uid://brtlgnjr8myva" path="res://materials/pointer.tres" id="5_ga0fs"]
+[ext_resource type="Script" path="res://scripts/LineRenderer.gd" id="6_0kd6c"]
+[ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://models/Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="7_825y2"]
+[ext_resource type="Material" uid="uid://ngfdiiq3iuit" path="res://materials/ground.tres" id="8_ssu74"]
+[ext_resource type="Material" uid="uid://bhp5w6vlhvikg" path="res://materials/blue.tres" id="9_5k64i"]
+[ext_resource type="Material" uid="uid://clpjm68mbpd6g" path="res://materials/red.tres" id="10_l3r8x"]
+[ext_resource type="Material" uid="uid://daworc7kg6uoc" path="res://materials/green.tres" id="11_v8bxo"]
+[ext_resource type="Material" uid="uid://67u77kmtkecq" path="res://materials/yellow.tres" id="12_8sqt5"]
+[ext_resource type="Material" uid="uid://bcaxuija8rrb3" path="res://materials/washbin.tres" id="13_wp2in"]
+[ext_resource type="Material" uid="uid://crnkf816fmfrs" path="res://materials/store.tres" id="14_80a7d"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_ae32m"]
 
@@ -39,42 +39,42 @@ size = Vector3(0.2, 0.2, 0.2)
 size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_grwbd")
+script = ExtResource("1_yiiab")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
-script = ExtResource("2_3p5ft")
+script = ExtResource("2_feyt0")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 
 [node name="left" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
-script = ExtResource("2_kbuqb")
+script = ExtResource("3_lki0u")
 
-[node name="OculusQuest2TouchController_Left" parent="XROrigin3D/left" instance=ExtResource("1_f7dng")]
+[node name="OculusQuest2TouchController_Left" parent="XROrigin3D/left" instance=ExtResource("4_1s1eb")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/left"]
 collide_with_areas = true
 
 [node name="LineRenderer" type="MeshInstance3D" parent="XROrigin3D/left"]
-material_override = ExtResource("4_dj8og")
+material_override = ExtResource("5_ga0fs")
 mesh = SubResource("ImmediateMesh_ae32m")
-script = ExtResource("4_rrbfe")
+script = ExtResource("6_0kd6c")
 
 [node name="right" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
-script = ExtResource("2_kbuqb")
+script = ExtResource("3_lki0u")
 
-[node name="OculusQuest2TouchController_Right" parent="XROrigin3D/right" instance=ExtResource("2_qbl3a")]
+[node name="OculusQuest2TouchController_Right" parent="XROrigin3D/right" instance=ExtResource("7_825y2")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/right"]
 collide_with_areas = true
 
 [node name="LineRenderer" type="MeshInstance3D" parent="XROrigin3D/right"]
-material_override = ExtResource("4_dj8og")
+material_override = ExtResource("5_ga0fs")
 mesh = SubResource("ImmediateMesh_km134")
-script = ExtResource("4_rrbfe")
+script = ExtResource("6_0kd6c")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_x743u")
@@ -85,7 +85,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/Ground"]
-material_override = ExtResource("4_5v5c2")
+material_override = ExtResource("8_ssu74")
 size = Vector3(100, 0.01, 100)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Ground"]
@@ -105,7 +105,7 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_dnbt7")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/glass"]
-material_override = ExtResource("6_fwged")
+material_override = ExtResource("9_5k64i")
 size = Vector3(0.5, 1, 0.5)
 
 [node name="metal" type="StaticBody3D" parent="WorldEnvironment"]
@@ -117,7 +117,7 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_dnbt7")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/metal"]
-material_override = ExtResource("7_emujx")
+material_override = ExtResource("10_l3r8x")
 size = Vector3(0.5, 1, 0.5)
 
 [node name="plastic" type="StaticBody3D" parent="WorldEnvironment"]
@@ -129,7 +129,7 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_dnbt7")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/plastic"]
-material_override = ExtResource("8_c66wu")
+material_override = ExtResource("11_v8bxo")
 size = Vector3(0.5, 1, 0.5)
 
 [node name="paper" type="StaticBody3D" parent="WorldEnvironment"]
@@ -141,7 +141,7 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_dnbt7")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/paper"]
-material_override = ExtResource("5_h2h5r")
+material_override = ExtResource("12_8sqt5")
 size = Vector3(0.5, 1, 0.5)
 
 [node name="washbin" type="StaticBody3D" parent="WorldEnvironment"]
@@ -153,7 +153,7 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_dnbt7")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/washbin"]
-material_override = ExtResource("10_gwgbf")
+material_override = ExtResource("13_wp2in")
 
 [node name="store" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.364, 0.5, -12.691)
@@ -164,7 +164,7 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_dnbt7")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/store"]
-material_override = ExtResource("9_iomm3")
+material_override = ExtResource("14_80a7d")
 size = Vector3(0.5, 1, 0.5)
 
 [node name="test_trash" type="RigidBody3D" parent="WorldEnvironment"]

@@ -32,9 +32,8 @@ func _process(delta: float) -> void:
 	if (left_colliding and right_colliding) and grabbed == null:
 		var left_collider = $"left/RayCast3D".get_collider().get_parent_node_3d()
 		var right_collider = $"right/RayCast3D".get_collider().get_parent_node_3d()
-		if left_collider.name == right_collider.name:
+		if left_collider.name == right_collider.name and left_collider.name != 'Ground':
 			if left_gripping and right_gripping:
-				print('1')
 				grabbed = left_collider
 				grabbed.global_position = midpoint
 				grabbed.global_transform.basis = Basis.IDENTITY
@@ -46,7 +45,6 @@ func _process(delta: float) -> void:
 				$"right/LineRenderer".visible = false
 				#grabbed.freeze = true
 	elif grabbed != null and (left_gripping and right_gripping) and !(left_has_obj or right_has_obj):
-		print('2')
 		var delta_pos = midpoint - last_midpoint
 		grabbed.global_position += delta_pos
 		var current_vector = $"right".global_position - $"left".global_position
@@ -59,7 +57,6 @@ func _process(delta: float) -> void:
 		grabbed.scale = initial_scale * scale_factor
 	# transition from spindle to right grabbing
 	elif grabbed != null and (right_gripping and !left_gripping) and !(left_has_obj or right_has_obj):
-		print('3')
 		grabbed.global_position = $"right".global_position
 		grabbed.scale = initial_scale
 		grabbed.global_transform.basis = initial_rotation
@@ -68,7 +65,6 @@ func _process(delta: float) -> void:
 		$"left/LineRenderer".visible = true
 	# transition from spindle to left grabbing
 	elif grabbed != null and (!right_gripping and left_gripping) and !(left_has_obj or right_has_obj):
-		print('4')
 		grabbed.global_position = $"left".global_position
 		grabbed.scale = initial_scale
 		grabbed.global_transform.basis = initial_rotation
@@ -76,7 +72,6 @@ func _process(delta: float) -> void:
 		left_has_obj = true
 		$"right/LineRenderer".visible = true
 	#elif !left_gripping and !right_gripping and grabbed != null and initial_scale:
-		#print('5')
 		#grabbed.scale = initial_scale
 		##grabbed.freeze = false
 		#grabbed = null
@@ -89,7 +84,6 @@ func _process(delta: float) -> void:
 	if right_has_obj and left_colliding:
 		var collider = $"left/RayCast3D".get_collider().get_parent_node_3d()
 		if grabbed == collider and left_gripping:
-			print('6')
 			right_has_obj = false
 			grabbed.global_position = midpoint
 			grabbed.global_transform.basis = Basis.IDENTITY
@@ -101,7 +95,6 @@ func _process(delta: float) -> void:
 	if left_has_obj and right_colliding:
 		var collider = $"right/RayCast3D".get_collider().get_parent_node_3d()
 		if grabbed == collider and right_gripping:
-			print('7')
 			left_has_obj = false
 			grabbed.global_position = midpoint
 			grabbed.global_transform.basis = Basis.IDENTITY
@@ -112,20 +105,18 @@ func _process(delta: float) -> void:
 			$"right/LineRenderer".visible = false
 	
 	# basic pointing
-	if left_colliding and grabbed == null and !right_colliding:
+	if left_colliding and grabbed == null and (!right_colliding or $"right/RayCast3D".get_collider().get_parent_node_3d().name == 'Ground'):
 		var collider = $"left/RayCast3D".get_collider().get_parent_node_3d()
-		if left_gripping and collider.name:
-			print('8')
+		if left_gripping and collider.name != 'Ground':
 			grabbed = collider
 			#grabbed.freeze = true
 			grabbed.global_position = $"left".global_position
 			last_pos_left = $"left".global_position
 			$"left/LineRenderer".visible = false
 			left_has_obj = true
-	elif right_colliding and grabbed == null and !left_colliding:
+	elif right_colliding and grabbed == null and (!left_colliding or $"left/RayCast3D".get_collider().get_parent_node_3d().name == 'Ground'):
 		var collider = $"right/RayCast3D".get_collider().get_parent_node_3d()
-		if right_gripping and collider.name:
-			print('9')
+		if right_gripping and collider.name != 'Ground':
 			grabbed = collider
 			#grabbed.freeze = true
 			grabbed.global_position = $"right".global_position
@@ -133,19 +124,16 @@ func _process(delta: float) -> void:
 			$"right/LineRenderer".visible = false
 			right_has_obj = true
 	elif grabbed != null and right_gripping and right_has_obj:
-		print('10')
 		var delta_pos = $"right".global_position - last_pos_right
 		velocity = delta_pos / delta
 		grabbed.global_position += delta_pos
 		last_pos_right = $"right".global_position
 	elif grabbed != null and left_gripping and left_has_obj:
-		print('11')
 		var delta_pos = $"left".global_position - last_pos_left
 		velocity = delta_pos / delta
 		grabbed.global_position += delta_pos
 		last_pos_left = $"left".global_position
 	elif !left_gripping and !right_gripping and grabbed != null:
-		print('12')
 		#grabbed.freeze = false
 		grabbed.linear_velocity = velocity
 		grabbed = null
