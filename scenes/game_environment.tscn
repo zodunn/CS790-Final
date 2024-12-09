@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dgts84jbalyck"]
+[gd_scene load_steps=25 format=3 uid="uid://dgts84jbalyck"]
 
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
 [ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]
@@ -6,12 +6,12 @@
 [ext_resource type="Script" path="res://scripts/collision_controller.gd" id="2_kbuqb"]
 [ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://models/Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="2_qbl3a"]
 [ext_resource type="Material" uid="uid://ngfdiiq3iuit" path="res://materials/ground.tres" id="4_5v5c2"]
-[ext_resource type="PackedScene" uid="uid://6mpnpuxxqtfk" path="res://scenes/conveyor_belt_scene.tscn" id="5_nl8i4"]
 [ext_resource type="Material" uid="uid://brtlgnjr8myva" path="res://materials/pointer.tres" id="4_dj8og"]
 [ext_resource type="Script" path="res://scripts/LineRenderer.gd" id="4_rrbfe"]
 [ext_resource type="Material" uid="uid://67u77kmtkecq" path="res://materials/yellow.tres" id="5_h2h5r"]
+[ext_resource type="PackedScene" uid="uid://djmf6x4vmpmww" path="res://scenes/conveyor_belt_scene.tscn" id="5_nl8i4"]
 [ext_resource type="Material" uid="uid://bhp5w6vlhvikg" path="res://materials/blue.tres" id="6_fwged"]
-[ext_resource type="Material" uid="uid://clpjm68mbpd6g" path="res://materials/red.tres" id="7_emujx"]
+[ext_resource type="Material" uid="uid://dhypd0ianps1p" path="res://materials/red.tres" id="7_emujx"]
 [ext_resource type="Material" uid="uid://daworc7kg6uoc" path="res://materials/green.tres" id="8_c66wu"]
 [ext_resource type="Material" uid="uid://crnkf816fmfrs" path="res://materials/store.tres" id="9_iomm3"]
 [ext_resource type="Material" uid="uid://bcaxuija8rrb3" path="res://materials/washbin.tres" id="10_gwgbf"]
@@ -190,6 +190,7 @@ shape = SubResource("BoxShape3D_2ynfl")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.37202, 0)
 
 [node name="ConveyorBeltScene" parent="." instance=ExtResource("5_nl8i4")]
+
 [connection signal="button_pressed" from="XROrigin3D/left" to="XROrigin3D/left" method="_on_button_pressed"]
 [connection signal="button_released" from="XROrigin3D/left" to="XROrigin3D/left" method="_on_button_released"]
 [connection signal="input_float_changed" from="XROrigin3D/left" to="XROrigin3D" method="_on_left_input_float_changed"]

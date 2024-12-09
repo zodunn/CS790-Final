@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmasi0nlf4xt0"]
+[gd_scene load_steps=5 format=3 uid="uid://caq7u20yhj7rv"]
 
 [ext_resource type="Script" path="res://scripts/cube.gd" id="1_2lcta"]
-[ext_resource type="Material" uid="uid://cvu3ydj4hredy" path="res://materials/pink.tres" id="1_68rf0"]
-[ext_resource type="Material" uid="uid://duvghayegwvnr" path="res://materials/red.tres" id="2_qe8bo"]
+[ext_resource type="Material" path="res://materials/pink.tres" id="1_68rf0"]
+[ext_resource type="Material" uid="uid://dhypd0ianps1p" path="res://materials/red.tres" id="2_qe8bo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_asu72"]
 material = ExtResource("2_qe8bo")
