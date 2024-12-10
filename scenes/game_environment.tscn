@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dgts84jbalyck"]
+[gd_scene load_steps=29 format=3 uid="uid://dgts84jbalyck"]
 
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
 [ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]
@@ -13,14 +13,23 @@
 [ext_resource type="Material" uid="uid://bhp5w6vlhvikg" path="res://materials/blue.tres" id="6_fwged"]
 [ext_resource type="Material" uid="uid://dhypd0ianps1p" path="res://materials/red.tres" id="7_emujx"]
 [ext_resource type="Material" uid="uid://daworc7kg6uoc" path="res://materials/green.tres" id="8_c66wu"]
+[ext_resource type="PackedScene" uid="uid://csk5sodpvg7ro" path="res://models/warehouse_building.glb" id="9_gkyd8"]
 [ext_resource type="Material" uid="uid://crnkf816fmfrs" path="res://materials/store.tres" id="9_iomm3"]
+[ext_resource type="PackedScene" uid="uid://chptkqmaivi8l" path="res://models/building_-_store.glb" id="10_fehk0"]
 [ext_resource type="Material" uid="uid://bcaxuija8rrb3" path="res://materials/washbin.tres" id="10_gwgbf"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_ae32m"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_km134"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mofda"]
+
+[sub_resource type="Sky" id="Sky_gv5me"]
+sky_material = SubResource("ProceduralSkyMaterial_mofda")
+
 [sub_resource type="Environment" id="Environment_x743u"]
+background_mode = 2
+sky = SubResource("Sky_gv5me")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ymtfk"]
 
@@ -97,6 +106,12 @@ shape = SubResource("BoxShape3D_ey8ib")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Ground/Area3D"]
 shape = SubResource("BoxShape3D_4huv2")
+
+[node name="Warehouse" parent="WorldEnvironment/Ground" instance=ExtResource("9_gkyd8")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -6.84418, 0.00499916, 2.47815)
+
+[node name="Sketchfab_Scene" parent="WorldEnvironment/Ground" instance=ExtResource("10_fehk0")]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -46.8233, 0.00500107, 2.12416)
 
 [node name="glass" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.75)
