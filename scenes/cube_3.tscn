@@ -15,3 +15,5 @@ polygon = PackedVector2Array(-0.492565, 0.489953, 0.487341, 0.489953, 0.494821, 
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_asu72")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
