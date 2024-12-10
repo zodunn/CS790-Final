@@ -24,6 +24,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if grabbed == null:
+		left_has_obj = false
+		right_has_obj = false
+		$"left/LineRenderer".visible = true
+		$"right/LineRenderer".visible = true
+		
 	# spindle code
 	var midpoint = Vector3(($"left".global_position + $"right".global_position)/2)
 	var left_colliding = $"left/RayCast3D".is_colliding()

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://models/Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="7_825y2"]
 [ext_resource type="Material" uid="uid://ngfdiiq3iuit" path="res://materials/ground.tres" id="8_ssu74"]
 [ext_resource type="Material" uid="uid://bhp5w6vlhvikg" path="res://materials/blue.tres" id="9_5k64i"]
-[ext_resource type="Material" uid="uid://clpjm68mbpd6g" path="res://materials/red.tres" id="10_l3r8x"]
+[ext_resource type="Material" uid="uid://dhypd0ianps1p" path="res://materials/red.tres" id="10_l3r8x"]
 [ext_resource type="Material" uid="uid://daworc7kg6uoc" path="res://materials/green.tres" id="11_v8bxo"]
 [ext_resource type="Material" uid="uid://67u77kmtkecq" path="res://materials/yellow.tres" id="12_8sqt5"]
 [ext_resource type="Material" uid="uid://bcaxuija8rrb3" path="res://materials/washbin.tres" id="13_wp2in"]
