@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dgts84jbalyck"]
+[gd_scene load_steps=29 format=3 uid="uid://dgts84jbalyck"]
 
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
 [ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]
@@ -15,7 +15,6 @@
 [ext_resource type="Material" uid="uid://daworc7kg6uoc" path="res://materials/green.tres" id="8_c66wu"]
 [ext_resource type="Material" uid="uid://crnkf816fmfrs" path="res://materials/store.tres" id="9_iomm3"]
 [ext_resource type="Material" uid="uid://bcaxuija8rrb3" path="res://materials/washbin.tres" id="10_gwgbf"]
-[ext_resource type="Script" path="res://scripts/recycling_collision_detector.gd" id="15_xt2xy"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_ae32m"]
 
@@ -50,12 +49,6 @@ size = Vector3(0.5, 1, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x5tpu"]
 size = Vector3(0.5, 1, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ix56f"]
-size = Vector3(0.2, 0.2, 0.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2ynfl"]
-size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_grwbd")
@@ -229,26 +222,6 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/store/Area3D"]
 shape = SubResource("BoxShape3D_x5tpu")
 
-[node name="test_trash" type="RigidBody3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82235, -0.882963)
-collision_layer = 2
-collision_mask = 2
-gravity_scale = 0.25
-script = ExtResource("15_xt2xy")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/test_trash"]
-size = Vector3(0.2, 0.2, 0.2)
-
-[node name="Area3D" type="Area3D" parent="WorldEnvironment/test_trash"]
-collision_layer = 5
-collision_mask = 5
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/test_trash/Area3D"]
-shape = SubResource("BoxShape3D_ix56f")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/test_trash"]
-shape = SubResource("BoxShape3D_2ynfl")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.37202, 0)
 
@@ -263,4 +236,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47198, -2.38419e-07, 10.36
 [connection signal="button_released" from="XROrigin3D/right" to="XROrigin3D/right" method="_on_button_released"]
 [connection signal="input_float_changed" from="XROrigin3D/right" to="XROrigin3D" method="_on_right_input_float_changed"]
 [connection signal="input_float_changed" from="XROrigin3D/right" to="XROrigin3D/right" method="_on_input_float_changed"]
-[connection signal="area_entered" from="WorldEnvironment/test_trash/Area3D" to="WorldEnvironment/test_trash" method="_on_area_3d_area_entered"]
