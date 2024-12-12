@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn4mcrwndkuxx"]
+[gd_scene load_steps=5 format=3 uid="uid://cn4mcrwndkuxx"]
 
 [ext_resource type="Script" path="res://scripts/recycling_collision_detector.gd" id="1_sy43l"]
+[ext_resource type="PackedScene" uid="uid://3b88jskf1jth" path="res://differenttrash/plastic/plastic_water_bottle (1).glb" id="2_gmhbg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ix56f"]
 size = Vector3(0.2, 0.2, 0.2)
@@ -14,7 +15,11 @@ collision_mask = 2
 gravity_scale = 0.25
 script = ExtResource("1_sy43l")
 
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_gmhbg")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
 size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Area3D" type="Area3D" parent="."]
