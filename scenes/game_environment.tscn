@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dgts84jbalyck"]
+[gd_scene load_steps=33 format=3 uid="uid://dgts84jbalyck"]
 
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
 [ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]

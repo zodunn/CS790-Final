@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://djmf6x4vmpmww"]
 
 [ext_resource type="PackedScene" uid="uid://fpsfp1nqp5dx" path="res://simple_rubber_conveyor/scene.gltf" id="1_7rbcl"]
-[ext_resource type="Material" uid="uid://s846wy48004o" path="res://materials/black.tres" id="2_ns13f"]
-[ext_resource type="PackedScene" uid="uid://btqvh37ll2b2m" path="res://scenes/glass.tscn" id="2_uhc6b"]
+[ext_resource type="Material" path="res://materials/black.tres" id="2_ns13f"]
+[ext_resource type="PackedScene" path="res://scenes/glass.tscn" id="2_uhc6b"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="3_c3o5s"]
-[ext_resource type="PackedScene" uid="uid://cn4mcrwndkuxx" path="res://scenes/plastic.tscn" id="3_spx66"]
-[ext_resource type="PackedScene" uid="uid://c0r4aowvxatas" path="res://scenes/metal.tscn" id="4_ovgyr"]
-[ext_resource type="PackedScene" uid="uid://d3pksuvxdwukv" path="res://scenes/paper.tscn" id="5_8kyh0"]
-[ext_resource type="PackedScene" uid="uid://b0l7ereq2x73v" path="res://scenes/store.tscn" id="6_ibh7m"]
+[ext_resource type="PackedScene" path="res://scenes/plastic.tscn" id="3_spx66"]
+[ext_resource type="PackedScene" path="res://scenes/metal.tscn" id="4_ovgyr"]
+[ext_resource type="PackedScene" path="res://scenes/paper.tscn" id="5_8kyh0"]
+[ext_resource type="PackedScene" path="res://scenes/store.tscn" id="6_ibh7m"]
 
 [node name="ConveyorBeltScene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.989998, -2.38419e-07, 5.35946)
