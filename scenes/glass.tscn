@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://btqvh37ll2b2m"]
+[gd_scene load_steps=6 format=3 uid="uid://coc1fsfkh3lle"]
 
 [ext_resource type="Script" path="res://scripts/recycling_collision_detector.gd" id="1_rbpn3"]
 [ext_resource type="PackedScene" uid="uid://huc0fxje30eb" path="res://differenttrash/glass/glass vass/simple_glass_vase.glb" id="2_vd7mg"]
+[ext_resource type="PackedScene" uid="uid://cll2lmprtg71o" path="res://differenttrash/glass/glass cup/wine_glass.glb" id="3_cr80v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ix56f"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.38, 0.629, 0.385)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ynfl"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.38, 0.629, 0.385)
 
 [node name="glass" type="RigidBody3D"]
 collision_layer = 2
@@ -18,6 +19,10 @@ script = ExtResource("1_rbpn3")
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_vd7mg")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.0807929, 0)
 
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("3_cr80v")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0.207679, 0)
+visible = false
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 visible = false
 size = Vector3(0.2, 0.2, 0.2)
@@ -27,9 +32,11 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00399168, 0.207092, 0)
 shape = SubResource("BoxShape3D_ix56f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004, 0.207, 0)
 shape = SubResource("BoxShape3D_2ynfl")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

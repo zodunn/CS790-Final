@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0r4aowvxatas"]
+[gd_scene load_steps=6 format=3 uid="uid://bi1n7e7bssq3j"]
 
 [ext_resource type="Script" path="res://scripts/recycling_collision_detector.gd" id="1_skqgc"]
 [ext_resource type="PackedScene" uid="uid://d2xohspuaowwv" path="res://differenttrash/metal/can/realistic_metal_coke_can.glb" id="2_ffh2d"]
+[ext_resource type="PackedScene" uid="uid://twt71eitf1r7" path="res://differenttrash/metal/can2/metal_can.glb" id="3_u1col"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ix56f"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.2, 0.365, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ynfl"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.2, 0.365, 0.2)
 
 [node name="metal" type="RigidBody3D"]
 collision_layer = 2
@@ -16,7 +17,11 @@ gravity_scale = 0.25
 script = ExtResource("1_skqgc")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_ffh2d")]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
+transform = Transform3D(0.02, 0, 0, 0, 0.0183791, 0.00788718, 0, -0.00788718, 0.0183791, 0, 0, 0)
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("3_u1col")]
+transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, 0, 0, 0)
+visible = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 visible = false

@@ -77,12 +77,7 @@ func _process(delta: float) -> void:
 		last_pos_left = $"left".global_position
 		left_has_obj = true
 		$"right/LineRenderer".visible = true
-	#elif !left_gripping and !right_gripping and grabbed != null and initial_scale:
-		#grabbed.scale = initial_scale
-		##grabbed.freeze = false
-		#grabbed = null
-		#$"right/LineRenderer".visible = true
-		#$"left/LineRenderer".visible = true
+
 		
 	last_midpoint = Vector3(($"left".global_position + $"right".global_position)/2)
 	
@@ -140,7 +135,7 @@ func _process(delta: float) -> void:
 		grabbed.global_position += delta_pos
 		last_pos_left = $"left".global_position
 	elif !left_gripping and !right_gripping and grabbed != null:
-		#grabbed.freeze = false
+		grabbed.freeze = false
 		grabbed.linear_velocity = velocity
 		grabbed = null
 		velocity = Vector3(0, 0, 0)

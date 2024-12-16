@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3pksuvxdwukv"]
+[gd_scene load_steps=5 format=3 uid="uid://40j8spd22x4y"]
 
 [ext_resource type="Script" path="res://scripts/recycling_collision_detector.gd" id="1_ojdjn"]
 [ext_resource type="PackedScene" uid="uid://40e072ht25rb" path="res://differenttrash/paper/paper1/folded_wrinkled_paper.glb" id="2_ekwtx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ix56f"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.555, 0.01, 0.405)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ynfl"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.555, 0.01, 0.405)
 
 [node name="paper" type="RigidBody3D"]
 collision_layer = 2

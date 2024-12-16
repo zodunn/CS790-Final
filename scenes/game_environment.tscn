@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dgts84jbalyck"]
+[gd_scene load_steps=38 format=3 uid="uid://dgts84jbalyck"]
 
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
 [ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]
@@ -17,7 +17,6 @@
 [ext_resource type="Material" uid="uid://crnkf816fmfrs" path="res://materials/store.tres" id="9_iomm3"]
 [ext_resource type="PackedScene" uid="uid://chptkqmaivi8l" path="res://models/building_-_store.glb" id="10_fehk0"]
 [ext_resource type="Material" uid="uid://bcaxuija8rrb3" path="res://materials/washbin.tres" id="10_gwgbf"]
-[ext_resource type="PackedScene" uid="uid://c6wimqleor42" path="res://scenes/wall_low_poly.glb" id="17_7y7gc"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_ae32m"]
 
@@ -40,25 +39,39 @@ size = Vector3(100, 0.01, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4huv2"]
 size = Vector3(100, 0.01, 100)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dnbt7"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0v5t"]
 size = Vector3(0.5, 1, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vxh5q"]
 size = Vector3(0.5, 1, 0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xbyoo"]
+size = Vector3(0.5, 1, 0.5)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_u8hvs"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_npvhu"]
 size = Vector3(0.5, 1, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nbb8m"]
 size = Vector3(0.5, 1, 0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_osnru"]
+size = Vector3(0.5, 1, 0.5)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_55cp3"]
 size = Vector3(0.5, 1, 0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gkqbx"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6m0of"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dnbt7"]
+size = Vector3(10.0282, 10.0121, 10.0936)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_x5tpu"]
-size = Vector3(0.5, 1, 0.5)
+size = Vector3(10.028, 10.3344, 10.094)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_grwbd")
@@ -122,16 +135,13 @@ shape = SubResource("BoxShape3D_4huv2")
 [node name="Warehouse" parent="WorldEnvironment/Ground" instance=ExtResource("9_gkyd8")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -6.84418, 0.00499916, 2.47815)
 
-[node name="Sketchfab_Scene" parent="WorldEnvironment/Ground" instance=ExtResource("10_fehk0")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -37.0319, 0.00500107, 2.12416)
-
 [node name="glass" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.75)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/glass"]
-shape = SubResource("BoxShape3D_dnbt7")
+[node name="gravity collider" type="CollisionShape3D" parent="WorldEnvironment/glass"]
+shape = SubResource("BoxShape3D_c0v5t")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/glass"]
 material_override = ExtResource("6_fwged")
@@ -141,7 +151,7 @@ size = Vector3(0.5, 1, 0.5)
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/glass/Area3D"]
+[node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/glass/Area3D"]
 shape = SubResource("BoxShape3D_vxh5q")
 
 [node name="metal" type="StaticBody3D" parent="WorldEnvironment"]
@@ -149,8 +159,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -0.75)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/metal"]
-shape = SubResource("BoxShape3D_dnbt7")
+[node name="gravity collider" type="CollisionShape3D" parent="WorldEnvironment/metal"]
+shape = SubResource("BoxShape3D_xbyoo")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/metal"]
 material_override = ExtResource("7_emujx")
@@ -160,7 +170,7 @@ size = Vector3(0.5, 1, 0.5)
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/metal/Area3D"]
+[node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/metal/Area3D"]
 shape = SubResource("BoxShape3D_u8hvs")
 
 [node name="plastic" type="StaticBody3D" parent="WorldEnvironment"]
@@ -168,8 +178,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.75)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/plastic"]
-shape = SubResource("BoxShape3D_dnbt7")
+[node name="gravity collider" type="CollisionShape3D" parent="WorldEnvironment/plastic"]
+shape = SubResource("BoxShape3D_npvhu")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/plastic"]
 material_override = ExtResource("8_c66wu")
@@ -179,7 +189,7 @@ size = Vector3(0.5, 1, 0.5)
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/plastic/Area3D"]
+[node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/plastic/Area3D"]
 shape = SubResource("BoxShape3D_nbb8m")
 
 [node name="paper" type="StaticBody3D" parent="WorldEnvironment"]
@@ -187,8 +197,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -0.75)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/paper"]
-shape = SubResource("BoxShape3D_dnbt7")
+[node name="gravity collider" type="CollisionShape3D" parent="WorldEnvironment/paper"]
+shape = SubResource("BoxShape3D_osnru")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/paper"]
 material_override = ExtResource("5_h2h5r")
@@ -198,7 +208,7 @@ size = Vector3(0.5, 1, 0.5)
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/paper/Area3D"]
+[node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/paper/Area3D"]
 shape = SubResource("BoxShape3D_55cp3")
 
 [node name="washbin" type="StaticBody3D" parent="WorldEnvironment"]
@@ -206,8 +216,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.886, 0.5, 2.125)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/washbin"]
-shape = SubResource("BoxShape3D_dnbt7")
+[node name="gravity collider" type="CollisionShape3D" parent="WorldEnvironment/washbin"]
+shape = SubResource("BoxShape3D_gkqbx")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/washbin"]
 material_override = ExtResource("10_gwgbf")
@@ -216,15 +226,16 @@ material_override = ExtResource("10_gwgbf")
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/washbin/Area3D"]
+[node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/washbin/Area3D"]
 shape = SubResource("BoxShape3D_6m0of")
 
 [node name="store" type="StaticBody3D" parent="WorldEnvironment"]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -40.4388, 0.5, -0.971115)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8924, 0, 0)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/store"]
+[node name="gravity collider" type="CollisionShape3D" parent="WorldEnvironment/store"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.273388, 4.76144, 0.323184)
 shape = SubResource("BoxShape3D_dnbt7")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/store"]
@@ -236,22 +247,12 @@ size = Vector3(0.5, 1, 0.5)
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/store/Area3D"]
+[node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/store/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.272999, 4.6003, 0.323)
 shape = SubResource("BoxShape3D_x5tpu")
 
-[node name="wall" type="Node3D" parent="WorldEnvironment"]
-transform = Transform3D(0.199424, 0, 0, 0, 0.13369, 0, 0, 0, 0.137671, 0, 0, 48.019)
-
-[node name="Sketchfab_Scene" parent="WorldEnvironment/wall" instance=ExtResource("17_7y7gc")]
-
-[node name="Sketchfab_Scene3" parent="WorldEnvironment/wall" instance=ExtResource("17_7y7gc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -724.478)
-
-[node name="Sketchfab_Scene2" parent="WorldEnvironment/wall" instance=ExtResource("17_7y7gc")]
-transform = Transform3D(-6.29624e-08, 0, -1, 0, 1, 0, 1.44041, 0, -4.37114e-08, 265.598, 0, -351.22)
-
-[node name="Sketchfab_Scene4" parent="WorldEnvironment/wall" instance=ExtResource("17_7y7gc")]
-transform = Transform3D(-6.29624e-08, 0, -1, 0, 1, 0, 1.44041, 0, -4.37114e-08, -237.085, 0, -370.369)
+[node name="Sketchfab_Scene" parent="WorldEnvironment/store" instance=ExtResource("10_fehk0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.175, 0.008, 2.275)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.37202, 0)

@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0l7ereq2x73v"]
+[gd_scene load_steps=5 format=3 uid="uid://cjx0krhnaf4rl"]
 
 [ext_resource type="Script" path="res://scripts/recycling_collision_detector.gd" id="1_wn17q"]
+[ext_resource type="PackedScene" uid="uid://dlw723j0tsj7d" path="res://differenttrash/trash/trashbag/trash_bag.glb" id="2_3jkm7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ix56f"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.3, 0.3, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ynfl"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.3, 0.3, 0.3)
 
 [node name="store" type="RigidBody3D"]
 collision_layer = 2
@@ -14,7 +15,11 @@ collision_mask = 2
 gravity_scale = 0.25
 script = ExtResource("1_wn17q")
 
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_3jkm7")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.141051, 0)
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
 size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Area3D" type="Area3D" parent="."]

@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn4mcrwndkuxx"]
+[gd_scene load_steps=6 format=3 uid="uid://c5hd4tkd7bwcs"]
 
 [ext_resource type="Script" path="res://scripts/recycling_collision_detector.gd" id="1_sy43l"]
 [ext_resource type="PackedScene" uid="uid://3b88jskf1jth" path="res://differenttrash/plastic/plastic_water_bottle (1).glb" id="2_gmhbg"]
+[ext_resource type="PackedScene" uid="uid://8ol3nejm3sns" path="res://differenttrash/plastic/clean bottle/plastic_water_bottle.glb" id="3_w4c7b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ix56f"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.175, 0.189, 0.615)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ynfl"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.175, 0.189, 0.615)
 
 [node name="plastic" type="RigidBody3D"]
 collision_layer = 2
@@ -18,6 +19,10 @@ script = ExtResource("1_sy43l")
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_gmhbg")]
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
 
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("3_w4c7b")]
+transform = Transform3D(0.0199079, -0.00191691, 8.3791e-11, 0, -8.74228e-10, -0.02, 0.00191691, 0.0199079, -8.70203e-10, 0.334156, 0.0606923, -0.253033)
+visible = false
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 visible = false
 size = Vector3(0.2, 0.2, 0.2)
@@ -27,9 +32,11 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110374, 0)
 shape = SubResource("BoxShape3D_ix56f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 shape = SubResource("BoxShape3D_2ynfl")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

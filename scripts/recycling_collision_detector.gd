@@ -7,23 +7,31 @@ var clean_state: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	self.freeze = true
+	set_clean_state()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if target:
+	if target and speed != 0:
+		$"Area3D".monitoring = false
 		var direction = (target.global_transform.origin - global_transform.origin).normalized()
 		global_transform.origin += direction * speed * delta
+	else:
+		$"Area3D".monitoring = true
 		
-		if global_transform.origin.distance_to(target.global_transform.origin) < 0.1:
-			queue_free()
+		
+func set_clean_state():
+	if self.name == 'paper' or self.name == 'store':
+		clean_state = true
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	var obj_collided_with = area.get_parent_node_3d()
 	if obj_collided_with.name == 'washbin':
-		# add code for setting clean state
+		if self.name == 'glass' or self.name == 'metal' or self.name == 'plastic':
+			$"Sketchfab_Scene".visible = false
+			$"Sketchfab_Scene2".visible = true
 		clean_state = true
 	elif obj_collided_with.name == name and clean_state:
 		# add code for collecting points
