@@ -15,6 +15,7 @@ var active_objects: Array[Node3D] = []  # Tracks active objects
 var spawn_timer: Timer = Timer.new()
 
 func _ready():
+	self.connect("grabbed_obj", Callable(self, "_on_object_deleted"))
 	_start_spawning()
 
 func _start_spawning():
@@ -46,8 +47,6 @@ func _on_spawn_object():
 	object_instance.set("target", player)
 	active_objects.append(object_instance)
 	print(active_objects)
-
-	object_instance.connect("remove", Callable(self, "_on_object_deleted"))
 
 func _on_object_deleted(obj: Node3D):
 	active_objects.erase(obj)

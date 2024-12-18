@@ -130,6 +130,7 @@ material_override = ExtResource("4_5v5c2")
 size = Vector3(100, 0.01, 100)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Ground"]
+transform = Transform3D(1, 0, 0, 0, 39, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_ey8ib")
 
 [node name="Area3D" type="Area3D" parent="WorldEnvironment/Ground"]
