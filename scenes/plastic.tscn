@@ -19,6 +19,12 @@ script = ExtResource("1_sy43l")
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_gmhbg")]
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
 
+[node name="Label3D" type="Label3D" parent="Sketchfab_Scene"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 6.83908, 0)
+text = "Needs cleaning"
+font_size = 150
+outline_size = 127
+
 [node name="Sketchfab_Scene2" parent="." instance=ExtResource("3_w4c7b")]
 transform = Transform3D(0.0199079, -0.00191691, 8.3791e-11, 0, -8.74228e-10, -0.02, 0.00191691, 0.0199079, -8.70203e-10, 0.334156, 0.0606923, -0.253033)
 visible = false
