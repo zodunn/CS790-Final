@@ -34,7 +34,7 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 			$"Sketchfab_Scene".visible = false
 			$"Sketchfab_Scene2".visible = true
 		clean_state = true
-	elif obj_collided_with.name == name and clean_state:
+	if obj_collided_with.name == name and clean_state:
 		scoreboard.emit()
 		delete()
 	else:
