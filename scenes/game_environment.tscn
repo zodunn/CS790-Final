@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dgts84jbalyck"]
+[gd_scene load_steps=40 format=3 uid="uid://dgts84jbalyck"]
 
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
 [ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]
@@ -17,6 +17,8 @@
 [ext_resource type="Material" uid="uid://crnkf816fmfrs" path="res://materials/store.tres" id="9_iomm3"]
 [ext_resource type="PackedScene" uid="uid://chptkqmaivi8l" path="res://models/building_-_store.glb" id="10_fehk0"]
 [ext_resource type="Material" uid="uid://bcaxuija8rrb3" path="res://materials/washbin.tres" id="10_gwgbf"]
+[ext_resource type="Material" uid="uid://ddcb7oyepyx3l" path="res://materials/scoreboard.tres" id="17_07o2d"]
+[ext_resource type="Script" path="res://scripts/score_script.gd" id="18_v6v44"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_ae32m"]
 
@@ -154,6 +156,11 @@ collision_mask = 4
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/glass/Area3D"]
 shape = SubResource("BoxShape3D_vxh5q")
 
+[node name="Label3D" type="Label3D" parent="WorldEnvironment/glass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+billboard = 1
+text = "Glass"
+
 [node name="metal" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -0.75)
 collision_layer = 2
@@ -172,6 +179,11 @@ collision_mask = 4
 
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/metal/Area3D"]
 shape = SubResource("BoxShape3D_u8hvs")
+
+[node name="Label3D" type="Label3D" parent="WorldEnvironment/metal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+billboard = 1
+text = "Metal"
 
 [node name="plastic" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.75)
@@ -192,6 +204,11 @@ collision_mask = 4
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/plastic/Area3D"]
 shape = SubResource("BoxShape3D_nbb8m")
 
+[node name="Label3D" type="Label3D" parent="WorldEnvironment/plastic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+billboard = 1
+text = "Plastic"
+
 [node name="paper" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -0.75)
 collision_layer = 2
@@ -211,6 +228,11 @@ collision_mask = 4
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/paper/Area3D"]
 shape = SubResource("BoxShape3D_55cp3")
 
+[node name="Label3D" type="Label3D" parent="WorldEnvironment/paper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+billboard = 1
+text = "Paper"
+
 [node name="washbin" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.886, 0.5, 2.125)
 collision_layer = 2
@@ -228,6 +250,11 @@ collision_mask = 4
 
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/washbin/Area3D"]
 shape = SubResource("BoxShape3D_6m0of")
+
+[node name="Label3D" type="Label3D" parent="WorldEnvironment/washbin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60686, 0)
+billboard = 1
+text = "Wash Station"
 
 [node name="store" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8924, 0, 0)
@@ -253,6 +280,18 @@ shape = SubResource("BoxShape3D_x5tpu")
 
 [node name="Sketchfab_Scene" parent="WorldEnvironment/store" instance=ExtResource("10_fehk0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.175, 0.008, 2.275)
+
+[node name="scoreboard" type="CSGBox3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45194, 1.62251, 5.86477)
+material_override = ExtResource("17_07o2d")
+size = Vector3(4, 3, 0.3)
+
+[node name="Label3D" type="Label3D" parent="WorldEnvironment/scoreboard"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.81501, 0, -0.151)
+text = "Score: 0"
+font_size = 100
+horizontal_alignment = 0
+script = ExtResource("18_v6v44")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.37202, 0)
