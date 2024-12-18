@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=42 format=3 uid="uid://dgts84jbalyck"]
-=======
-[gd_scene load_steps=40 format=3 uid="uid://dgts84jbalyck"]
->>>>>>> 61f5813b022837527f23944bbc29cd88f30eb77a
 
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
 [ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]
@@ -21,15 +17,12 @@
 [ext_resource type="Material" uid="uid://crnkf816fmfrs" path="res://materials/store.tres" id="9_iomm3"]
 [ext_resource type="PackedScene" uid="uid://chptkqmaivi8l" path="res://models/building_-_store.glb" id="10_fehk0"]
 [ext_resource type="Material" uid="uid://bcaxuija8rrb3" path="res://materials/washbin.tres" id="10_gwgbf"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://cln6ldwcexrw4" path="res://models/future_bin.glb" id="11_pr14a"]
 [ext_resource type="PackedScene" uid="uid://bpbuuew50wklf" path="res://models/sink_mtal_-_18mb.glb" id="14_lga03"]
 [ext_resource type="PackedScene" uid="uid://bioyc41b3yn1m" path="res://models/trash_container.glb" id="20_c07fc"]
 [ext_resource type="PackedScene" uid="uid://bmi1h7xv2fo8l" path="res://models/billboard.glb" id="21_54app"]
-=======
 [ext_resource type="Material" uid="uid://ddcb7oyepyx3l" path="res://materials/scoreboard.tres" id="17_07o2d"]
 [ext_resource type="Script" path="res://scripts/score_script.gd" id="18_v6v44"]
->>>>>>> 61f5813b022837527f23944bbc29cd88f30eb77a
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_ae32m"]
 
@@ -168,15 +161,12 @@ collision_mask = 4
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/glass/Area3D"]
 shape = SubResource("BoxShape3D_vxh5q")
 
-<<<<<<< HEAD
 [node name="Sketchfab_Scene" parent="WorldEnvironment/glass" instance=ExtResource("11_pr14a")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.030766, -0.430268, 0.0610325)
-=======
 [node name="Label3D" type="Label3D" parent="WorldEnvironment/glass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 billboard = 1
 text = "Glass"
->>>>>>> 61f5813b022837527f23944bbc29cd88f30eb77a
 
 [node name="metal" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -0.75)
@@ -198,15 +188,12 @@ collision_mask = 4
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/metal/Area3D"]
 shape = SubResource("BoxShape3D_u8hvs")
 
-<<<<<<< HEAD
 [node name="Sketchfab_Scene4" parent="WorldEnvironment/metal" instance=ExtResource("11_pr14a")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.00440991, -0.430268, 0.0610325)
-=======
 [node name="Label3D" type="Label3D" parent="WorldEnvironment/metal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 billboard = 1
 text = "Metal"
->>>>>>> 61f5813b022837527f23944bbc29cd88f30eb77a
 
 [node name="plastic" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.75)
@@ -228,15 +215,12 @@ collision_mask = 4
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/plastic/Area3D"]
 shape = SubResource("BoxShape3D_nbb8m")
 
-<<<<<<< HEAD
 [node name="Sketchfab_Scene3" parent="WorldEnvironment/plastic" instance=ExtResource("11_pr14a")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.0177467, -0.430268, 0.0610325)
-=======
 [node name="Label3D" type="Label3D" parent="WorldEnvironment/plastic"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 billboard = 1
 text = "Plastic"
->>>>>>> 61f5813b022837527f23944bbc29cd88f30eb77a
 
 [node name="paper" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -0.75)
@@ -258,15 +242,12 @@ collision_mask = 4
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/paper/Area3D"]
 shape = SubResource("BoxShape3D_55cp3")
 
-<<<<<<< HEAD
 [node name="Sketchfab_Scene2" parent="WorldEnvironment/paper" instance=ExtResource("11_pr14a")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0.0266043, -0.430268, 0.0610325)
-=======
 [node name="Label3D" type="Label3D" parent="WorldEnvironment/paper"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 billboard = 1
 text = "Paper"
->>>>>>> 61f5813b022837527f23944bbc29cd88f30eb77a
 
 [node name="washbin" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.26079, 2.886, 0.5, 2.22673)
@@ -287,15 +268,12 @@ collision_mask = 4
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/washbin/Area3D"]
 shape = SubResource("BoxShape3D_6m0of")
 
-<<<<<<< HEAD
 [node name="Sketchfab_Scene" parent="WorldEnvironment/washbin" instance=ExtResource("14_lga03")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -0.442323, 0, -1.93346e-08, -0.25117, -0.495, 0.0398754)
-=======
 [node name="Label3D" type="Label3D" parent="WorldEnvironment/washbin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60686, 0)
 billboard = 1
 text = "Wash Station"
->>>>>>> 61f5813b022837527f23944bbc29cd88f30eb77a
 
 [node name="store" type="StaticBody3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8924, 0, 0)
