@@ -4,6 +4,7 @@ var speed: float = 10.0
 var target: Node3D
 signal remove
 var clean_state: bool = false
+signal scoreboard
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,14 +35,8 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 			$"Sketchfab_Scene2".visible = true
 		clean_state = true
 	elif obj_collided_with.name == name and clean_state:
-		# add code for collecting points
+		scoreboard.emit()
 		delete()
-	elif obj_collided_with.name == "glass" || \
-	obj_collided_with.name == "plastic" || \
-	 obj_collided_with.name == "metal" || \
-	 obj_collided_with.name == "paper" || \
-	 obj_collided_with.name == "store":
-		speed = 0
 	else:
 		pass
 
