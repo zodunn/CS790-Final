@@ -17,6 +17,9 @@ var last_pos_right = 0.0
 var left_has_obj = false
 var right_has_obj = false
 
+#signal
+signal grabbed_obj
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -41,6 +44,7 @@ func _process(delta: float) -> void:
 		if left_collider.name == right_collider.name and left_collider.name != 'Ground':
 			if left_gripping and right_gripping:
 				grabbed = left_collider
+				grabbed_obj.emit(grabbed)
 				grabbed.global_position = midpoint
 				grabbed.global_transform.basis = Basis.IDENTITY
 				initial_vector = $"right".global_position - $"left".global_position
@@ -110,6 +114,7 @@ func _process(delta: float) -> void:
 		var collider = $"left/RayCast3D".get_collider().get_parent_node_3d()
 		if left_gripping and collider.name != 'Ground':
 			grabbed = collider
+			grabbed_obj.emit(grabbed)
 			#grabbed.freeze = true
 			grabbed.global_position = $"left".global_position
 			last_pos_left = $"left".global_position
@@ -119,6 +124,7 @@ func _process(delta: float) -> void:
 		var collider = $"right/RayCast3D".get_collider().get_parent_node_3d()
 		if right_gripping and collider.name != 'Ground':
 			grabbed = collider
+			grabbed_obj.emit(grabbed)
 			#grabbed.freeze = true
 			grabbed.global_position = $"right".global_position
 			last_pos_right = $"right".global_position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dgts84jbalyck"]
+[gd_scene load_steps=43 format=3 uid="uid://dgts84jbalyck"]
 
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://models/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_f7dng"]
 [ext_resource type="Script" path="res://scripts/XRSetup.gd" id="1_grwbd"]
@@ -19,10 +19,9 @@
 [ext_resource type="Material" uid="uid://bcaxuija8rrb3" path="res://materials/washbin.tres" id="10_gwgbf"]
 [ext_resource type="PackedScene" uid="uid://cln6ldwcexrw4" path="res://models/future_bin.glb" id="11_pr14a"]
 [ext_resource type="PackedScene" uid="uid://bpbuuew50wklf" path="res://models/sink_mtal_-_18mb.glb" id="14_lga03"]
+[ext_resource type="Script" path="res://scripts/score_script.gd" id="18_v6v44"]
 [ext_resource type="PackedScene" uid="uid://bioyc41b3yn1m" path="res://models/trash_container.glb" id="20_c07fc"]
 [ext_resource type="PackedScene" uid="uid://bmi1h7xv2fo8l" path="res://models/billboard.glb" id="21_54app"]
-[ext_resource type="Material" uid="uid://ddcb7oyepyx3l" path="res://materials/scoreboard.tres" id="17_07o2d"]
-[ext_resource type="Script" path="res://scripts/score_script.gd" id="18_v6v44"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_ae32m"]
 
@@ -131,6 +130,7 @@ material_override = ExtResource("4_5v5c2")
 size = Vector3(100, 0.01, 100)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Ground"]
+transform = Transform3D(1, 0, 0, 0, 39, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_ey8ib")
 
 [node name="Area3D" type="Area3D" parent="WorldEnvironment/Ground"]
@@ -163,6 +163,7 @@ shape = SubResource("BoxShape3D_vxh5q")
 
 [node name="Sketchfab_Scene" parent="WorldEnvironment/glass" instance=ExtResource("11_pr14a")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.030766, -0.430268, 0.0610325)
+
 [node name="Label3D" type="Label3D" parent="WorldEnvironment/glass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 billboard = 1
@@ -190,6 +191,7 @@ shape = SubResource("BoxShape3D_u8hvs")
 
 [node name="Sketchfab_Scene4" parent="WorldEnvironment/metal" instance=ExtResource("11_pr14a")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.00440991, -0.430268, 0.0610325)
+
 [node name="Label3D" type="Label3D" parent="WorldEnvironment/metal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 billboard = 1
@@ -217,6 +219,7 @@ shape = SubResource("BoxShape3D_nbb8m")
 
 [node name="Sketchfab_Scene3" parent="WorldEnvironment/plastic" instance=ExtResource("11_pr14a")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.0177467, -0.430268, 0.0610325)
+
 [node name="Label3D" type="Label3D" parent="WorldEnvironment/plastic"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 billboard = 1
@@ -244,6 +247,7 @@ shape = SubResource("BoxShape3D_55cp3")
 
 [node name="Sketchfab_Scene2" parent="WorldEnvironment/paper" instance=ExtResource("11_pr14a")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0.0266043, -0.430268, 0.0610325)
+
 [node name="Label3D" type="Label3D" parent="WorldEnvironment/paper"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 billboard = 1
@@ -255,6 +259,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="gravity collider" type="CollisionShape3D" parent="WorldEnvironment/washbin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.290635, 0, 0)
 shape = SubResource("BoxShape3D_gkqbx")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/washbin"]
@@ -266,12 +271,14 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/washbin/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.383655, 0, 0)
 shape = SubResource("BoxShape3D_6m0of")
 
 [node name="Sketchfab_Scene" parent="WorldEnvironment/washbin" instance=ExtResource("14_lga03")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -0.442323, 0, -1.93346e-08, -0.25117, -0.495, 0.0398754)
+
 [node name="Label3D" type="Label3D" parent="WorldEnvironment/washbin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60686, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.818807, 0)
 billboard = 1
 text = "Wash Station"
 
@@ -300,18 +307,6 @@ shape = SubResource("BoxShape3D_x5tpu")
 [node name="Sketchfab_Scene" parent="WorldEnvironment/store" instance=ExtResource("10_fehk0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.175, 0.008, 2.275)
 
-[node name="scoreboard" type="CSGBox3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45194, 1.62251, 5.86477)
-material_override = ExtResource("17_07o2d")
-size = Vector3(4, 3, 0.3)
-
-[node name="Label3D" type="Label3D" parent="WorldEnvironment/scoreboard"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.81501, 0, -0.151)
-text = "Score: 0"
-font_size = 100
-horizontal_alignment = 0
-script = ExtResource("18_v6v44")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.37202, 0)
 
@@ -326,6 +321,14 @@ transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74
 
 [node name="Billboard" parent="." instance=ExtResource("21_54app")]
 transform = Transform3D(-0.110608, 0, 0.278865, 0, 0.3, 0, -0.278865, 0, -0.110608, 1.77738, 0.00500011, 6.15793)
+
+[node name="Label3D" type="Label3D" parent="Billboard"]
+transform = Transform3D(0.00588194, 0, 0.999983, 0, 1, 0, -0.999983, 0, 0.00588194, 1.96674, 8.33488, 6.50414)
+text = "Score: 0"
+font_size = 511
+outline_size = 100
+horizontal_alignment = 0
+script = ExtResource("18_v6v44")
 
 [connection signal="button_pressed" from="XROrigin3D/left" to="XROrigin3D/left" method="_on_button_pressed"]
 [connection signal="button_released" from="XROrigin3D/left" to="XROrigin3D/left" method="_on_button_released"]
