@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dgagajiv7sx3n"
+path.s3tc="res://.godot/imported/trash_container_1.png-b38a6767751c96fb350946fdbced0ca3.s3tc.ctex"
+path.etc2="res://.godot/imported/trash_container_1.png-b38a6767751c96fb350946fdbced0ca3.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "9a35bea7f1f1d464fc0fa45d145afb71"
+}
+
+[deps]
+
+source_file="res://models/trash_container_1.png"
+dest_files=["res://.godot/imported/trash_container_1.png-b38a6767751c96fb350946fdbced0ca3.s3tc.ctex", "res://.godot/imported/trash_container_1.png-b38a6767751c96fb350946fdbced0ca3.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://models/trash_container_2.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

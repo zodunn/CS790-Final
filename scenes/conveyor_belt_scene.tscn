@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://djmf6x4vmpmww"]
 
 [ext_resource type="PackedScene" uid="uid://fpsfp1nqp5dx" path="res://simple_rubber_conveyor/scene.gltf" id="1_7rbcl"]
-[ext_resource type="Material" path="res://materials/black.tres" id="2_ns13f"]
+[ext_resource type="Material" uid="uid://s846wy48004o" path="res://materials/black.tres" id="2_ns13f"]
 [ext_resource type="PackedScene" uid="uid://coc1fsfkh3lle" path="res://scenes/glass.tscn" id="2_uhc6b"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="3_c3o5s"]
 [ext_resource type="PackedScene" uid="uid://c5hd4tkd7bwcs" path="res://scenes/plastic.tscn" id="3_spx66"]
 [ext_resource type="PackedScene" uid="uid://bi1n7e7bssq3j" path="res://scenes/metal.tscn" id="4_ovgyr"]
 [ext_resource type="PackedScene" uid="uid://40j8spd22x4y" path="res://scenes/paper.tscn" id="5_8kyh0"]
-[ext_resource type="PackedScene" path="res://scenes/store.tscn" id="6_ibh7m"]
+[ext_resource type="PackedScene" uid="uid://cjx0krhnaf4rl" path="res://scenes/store.tscn" id="6_ibh7m"]
 
 [node name="ConveyorBeltScene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.989998, -2.38419e-07, 5.35946)
@@ -32,7 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.03693)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.05748)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0828, 3.46807)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 1.0828, 3.46807)
 material_override = ExtResource("2_ns13f")
 
 [node name="spawnerTarget" type="Node3D" parent="."]
