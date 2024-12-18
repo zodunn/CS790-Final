@@ -36,6 +36,12 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 	elif obj_collided_with.name == name and clean_state:
 		# add code for collecting points
 		delete()
+	elif obj_collided_with.name == "glass" || \
+	obj_collided_with.name == "plastic" || \
+	 obj_collided_with.name == "metal" || \
+	 obj_collided_with.name == "paper" || \
+	 obj_collided_with.name == "store":
+		speed = 0
 	else:
 		pass
 

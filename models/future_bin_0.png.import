@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cq74h8gq34clh"
+path.s3tc="res://.godot/imported/future_bin_0.png-6650cc61bf38e7987f25f6caf7cef8de.s3tc.ctex"
+path.etc2="res://.godot/imported/future_bin_0.png-6650cc61bf38e7987f25f6caf7cef8de.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "d1a1645bc6573e9a6e07951b887ec909"
+}
+
+[deps]
+
+source_file="res://models/future_bin_0.png"
+dest_files=["res://.godot/imported/future_bin_0.png-6650cc61bf38e7987f25f6caf7cef8de.s3tc.ctex", "res://.godot/imported/future_bin_0.png-6650cc61bf38e7987f25f6caf7cef8de.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
