@@ -43,4 +43,5 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 
 func delete():
 	# Emit the signal before freeing the object
+	remove.emit(self)
 	self.queue_free()

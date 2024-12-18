@@ -15,7 +15,6 @@ var active_objects: Array[Node3D] = []  # Tracks active objects
 var spawn_timer: Timer = Timer.new()
 
 func _ready():
-	self.connect("grabbed_obj", Callable(self, "_on_object_deleted"))
 	_start_spawning()
 
 func _start_spawning():
@@ -26,16 +25,18 @@ func _start_spawning():
 
 func _on_spawn_object():
 	print(active_objects.size())
+	
 	if active_objects.size() >= max_active_objects:
 		_stop_all_objects()
 		spawn_timer.stop()
 		return
-
+	
 	if object_scenes.size() == 0:
 		return
 
 	var random_scene = object_scenes[randi() % object_scenes.size()]
 	var object_instance = random_scene.instantiate()
+	object_instance.connect("remove", Callable(self, "_on_object_deleted"))
 
 	var spawn_y = randf_range(min_y, max_y)
 	var spawn_position = player.global_transform.origin + Vector3(spawn_line_x, spawn_y, -spawn_distance)
@@ -47,6 +48,7 @@ func _on_spawn_object():
 	object_instance.set("target", player)
 	active_objects.append(object_instance)
 	print(active_objects)
+	
 
 func _on_object_deleted(obj: Node3D):
 	active_objects.erase(obj)
