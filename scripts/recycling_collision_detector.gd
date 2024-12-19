@@ -37,6 +37,7 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 		clean_state = true
 	if obj_collided_with.name == trash_name and clean_state:
 		scoreboard.emit()
+		$"Area3D".monitorable = false
 		delete()
 	else:
 		pass
