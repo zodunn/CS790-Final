@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://chw3kp5x63l0e"]
+
+[ext_resource type="Script" path="res://ui/ui_button/quit.gd" id="1_0071k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8r6g"]
+bg_color = Color(1, 0.0509804, 0.278431, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0071k")
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 0
+offset_right = 477.0
+offset_bottom = 421.0
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_l8r6g")
+text = "Quit"
+
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

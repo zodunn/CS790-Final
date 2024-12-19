@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqwnejhtje73x"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_m6ced"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mocgk"]
+bg_color = Color(1, 0.0509804, 0.278431, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m6ced")
+
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 646.0
+offset_bottom = 604.0
+theme_override_font_sizes/font_size = 120
+theme_override_styles/normal = SubResource("StyleBoxFlat_mocgk")
+text = "Start"
+
+[connection signal="pressed" from="start" to="." method="_on_button_pressed"]
