@@ -18,7 +18,7 @@ script = ExtResource("1_ojdjn")
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_ekwtx")]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="paper" type="CSGBox3D" parent="."]
 visible = false
 size = Vector3(0.2, 0.2, 0.2)
 

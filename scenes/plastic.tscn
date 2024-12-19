@@ -29,7 +29,7 @@ outline_size = 127
 transform = Transform3D(0.0199079, -0.00191691, 8.3791e-11, 0, -8.74228e-10, -0.02, 0.00191691, 0.0199079, -8.70203e-10, 0.334156, 0.0606923, -0.253033)
 visible = false
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="plastic" type="CSGBox3D" parent="."]
 visible = false
 size = Vector3(0.2, 0.2, 0.2)
 

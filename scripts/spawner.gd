@@ -2,14 +2,15 @@ extends Node3D
 
 @export var object_scenes: Array[PackedScene]
 @export var spawn_interval: float = 2.0
-@export var object_speed: float = 1.0
-@export var spawn_distance: float = 50.0
-@export var spawn_line_x: float = -6.0
+@export var object_speed: float = 0.05
+#@export var spawn_distance: float = 50.0
+#@export var spawn_line_x: float = -6.0
 @export var min_y: float = -1.0
 @export var max_y: float = 3.0
 @export var max_active_objects: int = 3
 
-@onready var player = get_parent().get_node("spawnerTarget")
+#@onready var player = get_parent().get_node("spawnerTarget")
+var target = Vector3(-2.40198, 1, -1.5)
 
 var active_objects: Array[Node3D] = []  # Tracks active objects
 var spawn_timer: Timer = Timer.new()
@@ -36,16 +37,19 @@ func _on_spawn_object():
 
 	var random_scene = object_scenes[randi() % object_scenes.size()]
 	var object_instance = random_scene.instantiate()
+	print(object_instance.name)
+	object_instance.set("trash_name", object_instance.name)
 	object_instance.connect("remove", Callable(self, "_on_object_deleted"))
 
 	var spawn_y = randf_range(min_y, max_y)
-	var spawn_position = player.global_transform.origin + Vector3(spawn_line_x, spawn_y, -spawn_distance)
 
 	get_parent().add_child(object_instance)
 	object_instance.global_transform.origin = get_parent().get_node("spawner").global_transform.origin
+	
+	var z_target_val = active_objects.size() + target.z
 
 	object_instance.set("speed", object_speed)
-	object_instance.set("target", player)
+	object_instance.set("target", Vector3(target.x, target.y, z_target_val))
 	active_objects.append(object_instance)
 	print(active_objects)
 	
@@ -64,6 +68,9 @@ func _stop_all_objects():
 			obj.set("speed", 0)
 
 func _resume_all_objects():
+	var i = 0
 	for obj in active_objects:
 		if(obj != null):
 			obj.set("speed", 1)
+			obj.set("target", Vector3(target.x, target.y, target.z + i))
+			i += 1

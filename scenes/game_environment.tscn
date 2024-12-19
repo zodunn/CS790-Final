@@ -271,7 +271,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="user collider" type="CollisionShape3D" parent="WorldEnvironment/washbin/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.383655, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.291252, 0, 0)
 shape = SubResource("BoxShape3D_6m0of")
 
 [node name="Sketchfab_Scene" parent="WorldEnvironment/washbin" instance=ExtResource("14_lga03")]
